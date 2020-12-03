@@ -57,14 +57,5 @@ public class ZooController {
 		}
 		
 		return foundAnimal;
-		
-		/*
-	      .map(employee -> {
-	        employee.setName(newEmployee.getName());
-	        employee.setRole(newEmployee.getRole());
-	        return repository.save(employee);
-	      })
-	      .orElseThrow(() -> new EmployeeNotFoundException(id));
-	     */
 	}
 }
