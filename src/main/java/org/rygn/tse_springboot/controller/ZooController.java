@@ -3,6 +3,7 @@ package org.rygn.tse_springboot.controller;
 import java.util.List;
 
 import org.rygn.tse_springboot.domain.Animal;
+import org.rygn.tse_springboot.exception.ResourceNotFoundException;
 import org.rygn.tse_springboot.service.ZooService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,8 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ZooController {
-	
-	
+		
 	@Autowired
 	private ZooService zooService;
 	
@@ -27,9 +27,17 @@ public class ZooController {
 	}
 	
 	@GetMapping("/animals/{id}")
-	public Animal oneAnimal(@PathVariable Long id) {
+	public Animal oneAnimal(@PathVariable Long id) throws ResourceNotFoundException {
 				
-		return this.zooService.findAnimal(id);
+		Animal result = this.zooService.findAnimal(id);
+		
+		if (result != null) {
+			
+			return result;
+		}
+		else {
+			throw new ResourceNotFoundException();
+		}
 	}
 	
 	@PostMapping("/animals")
