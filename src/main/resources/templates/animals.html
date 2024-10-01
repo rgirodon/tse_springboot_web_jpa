@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Animals</title>
+    </head>
+    <body>        
+        <main id="container">    
+        	<h1>Currently, in the zoo...</h1>
+			<ul>
+				<li th:each="animal : ${animals}" th:text="${animal.name}"></li>
+			</ul>                      
+        </main>
+    </body>
+</html>
