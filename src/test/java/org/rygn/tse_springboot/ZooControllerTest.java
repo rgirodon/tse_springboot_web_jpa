@@ -88,7 +88,7 @@ public class ZooControllerTest {
 				
 				found = true;
 				
-				animalRepository.delete(currentAnimal);
+				animalRepository.deleteById(currentAnimal.getId());
 			}
 		}
 		
@@ -138,7 +138,7 @@ public class ZooControllerTest {
 						.contentType(MediaType.APPLICATION_JSON).content(animalAsBytes))
 						.andExpect(status().isOk());
         
-        animal = this.animalRepository.findById(1L).orElse(null);
+        animal = this.animalRepository.findById(1L);
         
         if (animal == null) {
         	

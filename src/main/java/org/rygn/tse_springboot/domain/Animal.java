@@ -1,14 +1,7 @@
 package org.rygn.tse_springboot.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-
-@Entity
 public class Animal {
 	
-	@Id
-	@GeneratedValue
 	private Long id;
 
 	private String name;

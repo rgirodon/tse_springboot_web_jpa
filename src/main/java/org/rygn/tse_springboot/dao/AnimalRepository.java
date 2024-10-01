@@ -1,8 +1,19 @@
 package org.rygn.tse_springboot.dao;
 
-import org.rygn.tse_springboot.domain.Animal;
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
-public interface AnimalRepository extends JpaRepository<Animal, Long> {
+import org.rygn.tse_springboot.domain.Animal;
+
+public interface AnimalRepository {
+
+	Animal save(Animal animal);
+
+	Animal findById(Long id);
+
+	List<Animal> findAll();
+
+	void deleteById(Long id);
+
+	Integer count();
 
 }

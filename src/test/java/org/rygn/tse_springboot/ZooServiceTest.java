@@ -41,6 +41,7 @@ public class ZooServiceTest {
 	public void testCreateAnimal()  throws Exception{
 		
 		Animal animal = new Animal();
+		animal.setId(4L);
 		animal.setName("Zèbre");
 		
 		animal = this.zooService.createAnimal(animal);
@@ -49,7 +50,7 @@ public class ZooServiceTest {
 		
 		Assertions.assertEquals(4, allAnimals.size());
 		
-		this.animalRepository.delete(animal);
+		this.animalRepository.deleteById(animal.getId());
 	}
 		
 	@Test
@@ -62,6 +63,7 @@ public class ZooServiceTest {
 		Assertions.assertEquals(2, allAnimals.size());
 		
 		Animal animal = new Animal();
+		animal.setId(3L);
 		animal.setName("Lion");
 		this.animalRepository.save(animal);
 	}
@@ -69,7 +71,7 @@ public class ZooServiceTest {
 	@Test
 	public void testUpdateAnimal() throws Exception {
 		
-		Animal animal = this.animalRepository.findById(2L).orElse(null);
+		Animal animal = this.animalRepository.findById(2L);
 		
 		animal.setName("Gorille");
 		

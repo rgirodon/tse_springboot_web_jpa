@@ -7,27 +7,23 @@ import org.rygn.tse_springboot.domain.Animal;
 import org.rygn.tse_springboot.service.ZooService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
 public class ZooServiceImpl implements ZooService {
 
 	@Autowired
 	private AnimalRepository animalRepository;
 	
 	@Override
-	@Transactional(readOnly = true)
 	public List<Animal> findAllAnimals() {
 		
 		return this.animalRepository.findAll();
 	}
 
 	@Override
-	@Transactional(readOnly = true)
 	public Animal findAnimal(Long id) {
 
-		return this.animalRepository.findById(id).orElse(null);
+		return this.animalRepository.findById(id);
 	}
 
 	@Override
