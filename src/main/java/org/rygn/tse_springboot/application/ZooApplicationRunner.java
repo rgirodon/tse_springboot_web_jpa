@@ -30,6 +30,11 @@ public class ZooApplicationRunner implements ApplicationRunner {
 		lion.setId(3L);
 		lion.setName("Lion");		
 		this.animalRepository.save(lion);
+		
+		Animal hippo = new Animal();
+		hippo.setId(4L);
+		hippo.setName("Hippo");		
+		this.animalRepository.save(hippo);
 	}
 
 }

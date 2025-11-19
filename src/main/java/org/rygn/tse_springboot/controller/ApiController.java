@@ -15,18 +15,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ZooController {
+public class ApiController {
 		
 	@Autowired
 	private ZooService zooService;
 	
-	@GetMapping("/animals")
+	@GetMapping("/api/animals")
 	public List<Animal> allAnimals() {
 				
 		return this.zooService.findAllAnimals();
 	}
 	
-	@GetMapping("/animals/{id}")
+	@GetMapping("/api/animals/{id}")
 	public Animal oneAnimal(@PathVariable Long id) throws ResourceNotFoundException {
 				
 		Animal result = this.zooService.findAnimal(id);
@@ -40,19 +40,19 @@ public class ZooController {
 		}
 	}
 	
-	@PostMapping("/animals")
+	@PostMapping("/api/animals")
 	public Animal createAnimal(@RequestBody Animal animal) {
 		
 		return this.zooService.createAnimal(animal);
 	}
 	
-	@DeleteMapping("/animals/{id}")
+	@DeleteMapping("/api/animals/{id}")
 	public void deleteAnimal(@PathVariable Long id) {
 		
 		this.zooService.deleteAnimal(id);
 	}
 	
-	@PutMapping("/animals/{id}")
+	@PutMapping("/api/animals/{id}")
 	Animal replaceAnimal(@RequestBody Animal animal, @PathVariable Long id) {
 
 		Animal foundAnimal = this.zooService.findAnimal(id);
